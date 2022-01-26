@@ -1,22 +1,34 @@
+using System;
 using Xunit;
-
-namespace Metaverso
+using Metaverso;
+namespace MetaversoTest
 {
-
     public class SistemaTest
-    {
+    {   
+        [Theory]
+        [InlineData(new int[]{15,1},"Metaverso1")]
+        [InlineData(new int[0],"")]
 
-        [Fact]
-        public void SaludoTest()
-        {
-            // Given
-            var sis = new Sistema();
-            var param = "Santi";
-            var esperado = $"MAL Saludos {param}!";
-            // When
-            var result = sis.Saludo(param);
-            // Then
-            Assert.Equal(result, esperado);
+        public void Testmetaverso2(int[] numero, string expected){
+            String resultado = sis.metaverso(numero);
+            Assert.Equal(resultado,expected);
         }
+        Sistema sis = new Sistema();
+        [Theory]
+
+        [InlineData(15,"Metaverso")]
+        [InlineData(5,"Verso")]
+        [InlineData(3,"Meta")]
+        [InlineData(2,"2")]
+        
+        public void Testmetaverso(int numero,string expected)
+        {           
+            String resultado = sis.metaverso(numero);
+            Assert.Equal(resultado,expected);
+        }
+
+        
+        
+        
     }
 }
